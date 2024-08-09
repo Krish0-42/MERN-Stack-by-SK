@@ -1,0 +1,54 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta NAME="viewport" constent="width=device-width, initial-scale-1.0">
+    <title> Hello World!</title>
+    <style>
+        body{
+            background-color: #f1f1f1;
+            font-family: Arial, sans-serif;
+            margin: 1;
+            padding: 1;
+        }
+        .constainer{
+            width: 500px;
+            margin: 50px auto;
+            padding: 30px;
+            border: 1px solid ddd;
+            border-radius: 5px;
+            text-align: 5px;
+        }
+        h1{
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        p{
+            line-height: 1.5;
+        }
+        img{
+            width: 200px;
+            height: auto;
+            border-radius: 5;
+            border-bottom: 15;
+        }
+        .button{
+            background-color: 333;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<Body>
+    <h1> This my first code in Lenovo Ideapad i3</h1>
+    <div class="container">
+        <h1> Welcome</h1>
+        <P> This is a simple example of HTML and CSS.</P>
+        <img scr="https://source.unsplash.com/ramdon/200x200" alt="Image">
+        <button class="button">Let's goo bro!!!</button>
+    </div>
+</Body>
+</html>
