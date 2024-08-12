@@ -1,0 +1,56 @@
+
+.div1 h1{
+    background-color: rgb(255, 221, 0);
+    text-align: center;
+}
+.div2 h1{
+    background-color: rgb(255, 0, 0);
+}
+h2{
+    color: crimson;
+}
+.s1 h2{
+    background-color: orangered;
+}
+.menu {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}
+.menu li{
+    margin: auto;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.content div{
+    height: 25vh;
+    width: 25%;
+    border: 5px solid rgb(163, 228, 52);
+    align-content: center;
+}
+.content img{
+    width: 100%;
+    height: 100%;
+    align-content: center;
+}
+
+@media screen and (max-width: 600px) {
+    body{
+        background-color: blue;
+    }
+}
+
+footer {
+    background-color: #777;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
