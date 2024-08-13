@@ -22,13 +22,28 @@
     <button id = "blue_id"> Blue </button>
 </body>
 <script>
+    // chgRed = () => {
+    //     document.querySelector('#h1_id').classList.add('red');
+    // }
+
+    // chgBlue = () => {
+    //     document.querySelector('#h1_id').classList.add('blue');
+    // }
+
+    // or
+
+    var classH1 = document.querySelector('#h1_id').classList;
+    
     chgRed = () => {
-        document.querySelector('#h1_id').classList.add('red');
+        classH1.add('red');
+        classH1.remove('blue');
     }
 
     chgBlue = () => {
-        document.querySelector('#h1_id').classList.add('blue');
+        classH1.add('blue');
+        classH1.remove('red');
     }
+
     document.querySelector('#red_id').addEventListener("click", chgRed);
     document.querySelector('#blue_id').addEventListener("click", chgBlue);
 
