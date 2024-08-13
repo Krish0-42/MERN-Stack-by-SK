@@ -4,16 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
 </head>
 <body>
-    <label for = "input_id"> Enter you name </label> <br>
-    <input type = "text" id = "input_id" placeholder = "Enter your name here" />
-    <h1 id = h1_id> Hey header </h1>
-    <button onClick = "ChangeText()"> Click here </button>
+    <input type = "text" id = "input_id" placeholder = "Type to be displayed"/>
+    <h1 id = "h1_id"> hi this s heading </h1>
+    <button id="btn_id"> Click </button>
 </body>
-<script>
-    function ChangeText(){
+<script> 
+    document.getElementById("btn_id").addEventListener("click", changeText);
+    function changeText(){
         let val = document.getElementById("input_id").value;
         console.log(val);
         document.getElementById("h1_id").innerHTML = val;

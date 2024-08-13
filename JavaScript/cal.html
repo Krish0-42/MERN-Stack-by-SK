@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<body>
+    <h2>Calculator</h2>
+    <input type = "number" id = "number1" placeholder = "Enter a number"/>
+    <input type = "number" id = "number2" placeholder = "Enter a number"/>
+    <button onclick = "add()"> Addition </button>
+    <button onclick = "sub()"> Subtract </button>
+    <button onclick = "Mul()"> Multiply </button>
+    <button onclick = "Div()"> Division </button>
+    <p id="result"></p>
+</body>
+<script>
+    function add() {
+        var num1 = parseFloat(document.getElementById("number1").value);
+        var num2 = parseFloat(document.getElementById("number2").value);
+
+        const sum = num1 + num2;
+
+        document.getElementById("result").textContent = "The sum is: " + sum;
+    }
+
+    function sub() {
+        var num1 = parseFloat(document.getElementById("number1").value);
+        var num2 = parseFloat(document.getElementById("number2").value);
+
+        const sum = num1 - num2;
+
+        document.getElementById("result").textContent = "The sum is: " + sum;
+    }
+
+    function Mul() {
+        var num1 = parseFloat(document.getElementById("number1").value);
+        var num2 = parseFloat(document.getElementById("number2").value);
+
+        const sum = num1 * num2;
+
+        document.getElementById("result").textContent = "The sum is: " + sum;
+    }
+
+    function Div() {
+        var num1 = parseFloat(document.getElementById("number1").value);
+        var num2 = parseFloat(document.getElementById("number2").value);
+
+        const sum = num1 / num2;
+
+        document.getElementById("result").textContent = "The sum is: " + sum;
+    }
+
+</script>
+</html>
