@@ -18,7 +18,7 @@
 </body>
 <script>
     async function getApi() {
-        let res = await fetch("https://reqres.in/api/users");
+        let res = await fetch("https://reqres.in/api/users"), {"method":"POST"};
         let jsonr = res.json() // To extract the actual response using json
         console.log(jsonr); // check the console for output!    
     }
