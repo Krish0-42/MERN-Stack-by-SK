@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+<script>
+    // es6 filter search it
+    var num = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    var even = num.filter((i) => i % 2 == 0);
+    console.log(even)
+
+    // es6 map
+    let m = [21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40]
+    var m1 = m.map((i)=>i*2);
+    console.log(m1)
+
+    //es6 chain
+    let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    let afterFilter = arr.filter((i) => i % 2 == 0).map((i) => i * 2);
+    console.log(afterFilter);
+</script>
+</html>

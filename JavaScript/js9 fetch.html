@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 20%;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+    <h1> Don't click this button!</h1>
+    <button onclick="getApi()"> Don't press this button </button>
+</body>
+<script>
+    async function getApi() {
+        let res = await fetch("https://reqres.in/api/users");
+        let jsonr = res.json() // To extract the actual response using json
+        console.log(jsonr); // check the console for output!    
+    }
+</script>
+</html>

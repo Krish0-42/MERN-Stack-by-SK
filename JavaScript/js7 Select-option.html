@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style> 
+        h1{
+            color: blue;
+            
+        }
+    </style>
+</head>
+<body>
+    <h1> Choose your Menu </h1>
+    <marquee  scrollamount="100" > 
+        <select id="op" onchange="opt()"> 
+            <option selected> Menu you can dive </option>
+            <option> Ice Cream </option>
+            <option> Non Veg </option>
+            <option> Veg </option>
+            <option> Vegan </option>
+            <option> Protein </option>
+        </select>
+    </marquee>
+</body>
+<script> 
+    function opt() {
+        //var select = document.querySelector('select');
+        var sel = document.getElementById("op").value;
+        console.log(sel); // will see in console in browser.
+    }
+</script>
+</html>
