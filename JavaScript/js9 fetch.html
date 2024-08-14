@@ -10,6 +10,10 @@
             margin-top: 20%;
             background-color: aquamarine;
         }
+        button{
+            margin: 10px;
+            color: red;
+        }
     </style>
 </head>
 <body>
@@ -18,7 +22,7 @@
 </body>
 <script>
     async function getApi() {
-        let res = await fetch("https://reqres.in/api/users"), {"method":"POST"};
+        let res = await fetch("https://reqres.in/api/users", {"method":"POST"});
         let jsonr = res.json() // To extract the actual response using json
         console.log(jsonr); // check the console for output!    
     }
