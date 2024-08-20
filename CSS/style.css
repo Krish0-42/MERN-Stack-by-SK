@@ -32,18 +32,17 @@ tt{
     display: flex;
     flex-direction: row;
     align-items: center;
+    height: 100vh;
 }
 
 .content div{
     height: 25vh;
     width: 25%;
     border: 5px solid rgb(163, 228, 52);
-    align-content: center;
 }
 .content img{
     width: 100%;
     height: 100%;
-    align-content: center;
 }
 
 
