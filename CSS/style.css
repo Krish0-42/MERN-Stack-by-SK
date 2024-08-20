@@ -12,6 +12,13 @@ h2{
 .s1 h2{
     background-color: orangered;
 }
+
+tt{
+    font-size: 20%;
+    text-align: center;
+    background-color: aquamarine;
+}
+
 .menu {
     display: flex;
     flex-direction: row;
