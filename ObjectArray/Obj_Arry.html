@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* Key and Value
+        Key should be unique */
+        let PersonList = [
+            {
+                "name": "Sam",
+                "mobile": 5445454,
+                "address": "sample",
+                "email":"1234KKKK@gmail.com"
+            }, 
+            {
+                "name": "John",
+                "mobile": 90909090,
+                "address": "AAA",
+                "email": "12345678kkkk@gmail.com"
+            },
+            {
+                "name": "Jeffery",
+                "mobile": 12345678,
+                "address": "BBB",
+                "email": "1234zzzz@gmail.com"
+            }
+        ]
+        // for (i in PersonList){
+        //     console.log(PersonList[i]);
+        // }
+        //console.log(PersonList[2]['email']); // displays 3rd k:v pair, This is list
+
+        async function getuserlist() { // we have are fetch info from reqres.in
+            let res = await fetch("http://reqres.in/api/users", {"method":"GET"});
+                //console.log(res); need clarity 
+            let json = await res.json();
+                //console.log(json); // converts the res data into json k:v pairs
+            for (let index in json['data']){
+                console.log(json["data"][index]['first_name']);
+                console.log(json["data"][index]['email']);
+            }
+        }
+        getuserlist();
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
