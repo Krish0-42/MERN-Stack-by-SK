@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Textbox to Array</title>
+</head>
+<body>
+    <h1>Add Text to Array</h1>
+    <form id="textForm">
+        <label for="textInput">Enter text:</label>
+        <input type="text" id="textInput" name="textInput" required>
+        <button type="submit">Add to Array</button>
+    </form>
+
+    <script>
+        // Initialize an empty array to store the text values
+        let textArray = [];
+
+        // Get the form element and add an event listener for form submission
+        document.getElementById("textForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent the form from submitting traditionally
+
+            // Get the value from the textbox
+            const textValue = document.getElementById("textInput").value;
+
+            // Add the value to the array
+            textArray.push(textValue);
+
+            // Clear the textbox
+            document.getElementById("textInput").value = '';
+
+            // Print the current state of the array in the console
+            console.log(textArray);
+        });
+    </script>
+</body>
+</html>

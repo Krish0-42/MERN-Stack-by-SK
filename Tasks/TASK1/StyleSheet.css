@@ -1,0 +1,99 @@
+/* The CSS code you provided is styling a navigation bar with the class name "NavBar". */
+/* .NavBar{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    background-color: bisque;
+}
+.NavBar li{
+    margin: auto;
+} */
+
+.NavBar {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    background-color: bisque;
+    padding: 0;
+    margin: 0;
+    justify-content: space-around; /* Distribute items evenly */
+}
+
+/* Styling the links as buttons */
+.NavBar li a {
+    display: inline-block;
+    background-color: #f3d785; /* Button color */
+    color: white; /* Text color */
+    padding: 10px 8px; /* Padding around the text */
+    text-decoration: none; /* Remove underline */
+    border-radius: 20px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+/* Hover effect for the buttons */
+.NavBar li a:hover {
+    background-color: #41b5d2; /* Darker green on hover */
+}
+
+body{
+    background-image: url("C:\New_folder\Code\MERN\Task\TASK1\100452.jpg")  no-repeat center center fixed;
+    background-repeat: none;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    color: azure;
+}
+
+form { max-width: 300px; margin: 0 auto; }
+input { width: 100%; padding: 10px; margin: 5px 0; }
+button { padding: 10px 15px; background-color: #333; color: #fff; border: none; }
+
+h1{
+    color: #f4ecec;
+    text-align: center;
+    animation: splash 5s infinite;
+}
+
+@keyframes splash{
+    0%{
+        color: #6955de;
+    }
+    50%{
+        color: rgb(246, 187, 25);
+
+    }
+    100%{
+        color: #6955de;
+    }
+}
+
+
+.grid-item {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-left: 85px;
+    margin-bottom: 20px;
+}
+
+img{
+    height: 250px;
+    width: 250px;
+}
+img:hover{
+    transition: width 1s, height 1s; /* Correct syntax for transition */
+    width: 275px; /* Change width on hover */
+    height: 275px; /* Change height on hover */
+}
+
+footer{
+    background-color: #cd5252;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+
