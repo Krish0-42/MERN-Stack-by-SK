@@ -18,13 +18,34 @@ function App() {
   ]);
 
   return (
-    <Provider store={myStore}> 
-      <div className = "App"> 
+    <Provider store={myStore}>
+      <div className="Navigate"> 
+        <nav> 
+          <link to="/Home"> Home</link> {/* <link> is similar to <a href="#"> */}
+          <link to="/About"> About</link>
+          <link to="/Contact"> Contact</link>
+        </nav>
+      </div>
+    
+      <div className="App">
         {/* <RouterProvider router={routerConfig} /> */}
         <RouterProvider router={routerPaths} />
       </div>
     </Provider>
   );
+  
+  // return (
+  //   <Provider store={myStore}> 
+  //     <div className = "App"> 
+  //       {/* <RouterProvider router={routerConfig} /> */}
+  //       <RouterProvider router={routerPaths} />
+  //     </div>
+  //   </Provider>
+    
+  //   <input type="button" value="add"/>
+  //   <input type="button" value="sub"/>
+  // );
+  
 
 }
 
