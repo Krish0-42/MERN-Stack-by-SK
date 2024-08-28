@@ -19,14 +19,6 @@ function App() {
 
   return (
     <Provider store={myStore}>
-      <div className="Navigate"> 
-        <nav> 
-          <Link to="/Home"> Home</Link> {/* <link> is similar to <a href="#"> */}
-          <Link to="/About"> About</Link>
-          <Link to="/Contact"> Contact</Link>
-        </nav>
-      </div>
-    
       <div className="App">
         {/* <RouterProvider router={routerConfig} /> */}
         <RouterProvider router={routerPaths} />

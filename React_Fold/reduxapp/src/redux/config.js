@@ -9,10 +9,12 @@ const counterLogic = (state = 0, action) => {
         default:
             return state;
     }
+    return state;
 }
 
 export const myStore = configureStore({
     reducer: {
         "counter": counterLogic
+        // you can add more code if you see fit
     }
 });
