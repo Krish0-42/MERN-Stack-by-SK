@@ -17,8 +17,17 @@ const Home = () => {
         })
     };
 
+    // Inline styles for centering elements
+    const centerStyle = {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100vh', // optional: centers vertically within the viewport
+    };
+
     return (
-        <div>
+        <div style={centerStyle}>
             <Header/>
             <h1>This is the home page</h1>
             <h1> Your Counter value: {countVal}</h1>

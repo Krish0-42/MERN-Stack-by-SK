@@ -2,7 +2,7 @@
 // npm install react-redux 
 
 import './App.css';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Link} from 'react-router-dom';
 import { Provider } from 'react-redux'
 import { myStore } from './redux/config';
 import Home from './Home';
@@ -21,9 +21,9 @@ function App() {
     <Provider store={myStore}>
       <div className="Navigate"> 
         <nav> 
-          <link to="/Home"> Home</link> {/* <link> is similar to <a href="#"> */}
-          <link to="/About"> About</link>
-          <link to="/Contact"> Contact</link>
+          <Link to="/Home"> Home</Link> {/* <link> is similar to <a href="#"> */}
+          <Link to="/About"> About</Link>
+          <Link to="/Contact"> Contact</Link>
         </nav>
       </div>
     
@@ -34,19 +34,6 @@ function App() {
     </Provider>
   );
   
-  // return (
-  //   <Provider store={myStore}> 
-  //     <div className = "App"> 
-  //       {/* <RouterProvider router={routerConfig} /> */}
-  //       <RouterProvider router={routerPaths} />
-  //     </div>
-  //   </Provider>
-    
-  //   <input type="button" value="add"/>
-  //   <input type="button" value="sub"/>
-  // );
-  
-
 }
 
 export default App;
