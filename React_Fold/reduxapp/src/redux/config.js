@@ -9,12 +9,26 @@ const counterLogic = (state = 0, action) => {
         default:
             return state;
     }
-    return state;
 }
 
 export const myStore = configureStore({
     reducer: {
         "counter": counterLogic
-        // you can add more code if you see fit
+    }
+});
+
+const storeDetails = (state = {}, action) => {
+    switch(action.type){
+        case "saveDetails":
+            console.log(state.data);
+            return state.data;
+        default:
+            return state;
+    }
+}
+
+export const myStore2 = configureStore({
+    reducer: {
+        "details": storeDetails
     }
 });

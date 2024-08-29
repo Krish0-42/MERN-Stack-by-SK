@@ -2,7 +2,7 @@
 // npm install react-redux 
 
 import './App.css';
-import { createBrowserRouter, RouterProvider, Link} from 'react-router-dom';
+import { createBrowserRouter, RouterProvider} from 'react-router-dom';
 import { Provider } from 'react-redux'
 import { myStore } from './redux/config';
 import Home from './Home';
