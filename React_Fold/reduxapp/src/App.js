@@ -12,7 +12,7 @@ import Contact from './Contact';
 function App() {
   const routerPaths = createBrowserRouter([
     { path: "/", element: <Home /> },
-    { path: "/home", element: <Home /> },
+    { path: "/Home", element: <Home /> },
     { path: "/About", element: <About /> },
     { path: "/Contact", element: <Contact /> } 
   ]);
