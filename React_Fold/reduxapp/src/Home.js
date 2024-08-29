@@ -19,8 +19,8 @@ const Home = () => {
 
     const storeDetailsFun = () => {
         dispatch({
-            "type":"saveDetailsFun",
-            "data" : {"name":"" , "email":""}
+            "type":"saveDetails",
+            "data" : {"name":" Sai krishnan " , "email":"spsaikrishnan@gmail.com"}
         })
     }
 
@@ -32,7 +32,7 @@ const Home = () => {
             <input type="button" value="add"  onClick={add}/>
             <input type="button" value="sub"  onClick={sub}/>
             <h4> This will display in about page! </h4>
-            <button onClick={"storeDetailsFun"}> display </button>
+            <button onClick = { storeDetailsFun }> display </button>
         </div>
     );
     
