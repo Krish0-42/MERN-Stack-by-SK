@@ -14,6 +14,8 @@ app.post("/login",(req,res)=>{
     let pwd = req['query']['password']
 	let uname = req['query']['name']
 	let adrs = req['query']['address']
+
+	let { email2, password, name, address } = req.body;
     
 	console.log(email, pwd)
 
