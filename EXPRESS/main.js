@@ -1,10 +1,13 @@
 var express = require("express");
 var app = express();
-app.get("/myname",(req,res)=>{
-    res.json({"msg":"yourname"});
+
+app.use(express.json()); // use this where your going to use .body()
+
+app.get("/my_name",(req,res)=>{
+    res.json({"msg":"your_name"});
 });
 
-app.post("/myname",(req,res)=>{
+app.post("/my_name",(req,res)=>{
     res.json({"msg":"your post name"});
 });
 
@@ -15,17 +18,29 @@ app.post("/login",(req,res)=>{
 	let uname = req['query']['name']
 	let adrs = req['query']['address']
 
-	let { email2, password, name, address } = req.body;
+	//let { email2, password, name, address } = req.body;
     
+
 	console.log(email, pwd)
 
-	if(email == 'admin@gmail.com' && pwd == 'admin' && uname == 'kadmin' && adrs == '12, b st, c nagar, d 600 001'){
-        res.json({"msg":"You are correct"})
+	if(email == 'admin@gmail.com' && pwd == 'admin' && uname == 'k_admin' && adrs == '12, b st, c nagar, d 600 001'){
+        res.json({"msg":"You are correct"});
     }else{
-        res.json({"msg":"You are Incorrect"})
+        res.json({"msg":"You are Incorrect"});
     }
 });
 
+// Method 2
+app.post("/login2",(req,res)=>{
+
+	let { email, password, name, address } = req.query;
+
+	if(email == 'admin@gmail.com' && password == 'admin' && name == 'k_admin' && address == '12, b st, c nagar, d 600 001'){
+        res.json({"msg":"You are correct"});
+    }else{
+        res.json({"msg":"You are Incorrect"});
+    }
+});
 
 
 app.listen(8080,()=>{
