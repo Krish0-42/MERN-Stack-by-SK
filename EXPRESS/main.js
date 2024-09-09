@@ -42,6 +42,12 @@ app.post("/login2",(req,res)=>{
     }
 });
 
+app.delete("/deleteUserByName", async(req, res) => {
+    let {name} = req.query;
+    await client.connect();
+    await db.collection("employee").deleteOne({"name" : name});
+    res.json({"msg" : "user deleted"});
+})
 
 app.listen(8080,()=>{
     console.log("Server Started")
