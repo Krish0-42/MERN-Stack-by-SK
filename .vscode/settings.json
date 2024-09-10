@@ -2,5 +2,6 @@
     "cSpell.words": [
         "reduxjs",
         "Sairam"
-    ]
+    ],
+    "editor.cursorStyle": "line"
 }
