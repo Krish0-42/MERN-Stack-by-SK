@@ -1,8 +1,18 @@
 {
     "cSpell.words": [
         "adrs",
+        "createjob",
+        "deletejobbyname",
+        "getjob",
+        "jobcall",
+        "joblogin",
+        "listempbyname",
+        "listjobbyname",
         "reduxjs",
-        "Sairam"
+        "Sairam",
+        "updatejob",
+        "updatejobbyname",
+        "updatejobusingget"
     ],
     "editor.cursorStyle": "line"
 }

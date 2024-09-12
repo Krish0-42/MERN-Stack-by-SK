@@ -20,7 +20,6 @@ app.post("/login",(req,res)=>{
 
 	//let { email2, password, name, address } = req.body;
     
-
 	console.log(email, pwd)
 
 	if(email == 'admin@gmail.com' && pwd == 'admin' && uname == 'k_admin' && adrs == '12, b st, c nagar, d 600 001'){

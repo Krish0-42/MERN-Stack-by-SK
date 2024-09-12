@@ -1,10 +1,8 @@
-const { MongoClient } = require('mongodb');
+const { MongoClient, ObjectId } = require('mongodb');
 const express = require('express');
-// or as an es module:
-// import { MongoClient } from 'mongodb'
 
 const ex = express();
-app.use(express.json());
+ex.use(express.json());
 
 // Connection URL
 const url = 'mongodb+srv://saikrishnan209:Sairam_22@cluster0.bvxx4.mongodb.net/';
@@ -13,83 +11,86 @@ const client = new MongoClient(url);
 // Database Name
 const dbName = 'office';
 
-async function insertData() {
+async function insertData(req) {
   let { name, email, password, mobile } = req.body;
+  
   let empData = {
-    "name": name,
-    "mobile": mobile,
-    "email": email,
-    "password": password
-  }
+    name,
+    mobile,
+    email,
+    password
+  };
 
   // Use connect method to connect to the server
   await client.connect();
   const db = client.db(dbName);
-  const collection = await db.collection('employee');
+  const collection = db.collection('employee');
   await collection.insertOne(empData);
   console.log("Inserted");
-
-  // the following code examples can be pasted here...
   return 'done.';
 }
 
-// Handles GET requests, typically used to retrieve data from the server. [Retrieves data]
-app.get("/get_employee", async (req, res) => {
+// Handles GET requests [Retrieves data]
+ex.get("/get_employee", async (req, res) => {
   await client.connect();
-  let db = client.db(dbName);
-  let list = await db.collection('employee').find({}).toArray();
-  res.status(200).json(list)
-})
+  const db = client.db(dbName);
+  const list = await db.collection('employee').find({}).toArray();
+  res.status(200).json(list);
+});
 
-app.get("/list_emp_by_name/:name", async (req, res) => {
+// Handles GET requests to get an employee by name
+ex.get("/list_emp_by_name/:name", async (req, res) => {
   await client.connect();
-  let { name } = req.params; //capture values specified at their position in the URL.
-  let db = client.db(ex);
-  let list = await db.collection('employee').find({ name: name }).toArray();
-})
+  const { name } = req.params;
+  const db = client.db(dbName);
+  const list = await db.collection('employee').find({ name }).toArray();
+  res.json(list);  // Add missing response
+});
 
-// [Submit's new data] Handles POST requests, mainly used to submit or insert new data to the server.
-app.post("/log-in-data", async (req, res) => {
+// Handles POST requests [Submit's new data]
+ex.post("/log-in-data", async (req, res) => {
   await client.connect();
-  let { email, password } = req.body;
-  let db = client.db(ex);
-  let list = await db.collection('employee').find({ "email": email, "password": password }).toArray();
+  const { email, password } = req.body;
+  const db = client.db(dbName);
+  const list = await db.collection('employee').find({ email, password }).toArray();
 
   if (list.length > 0) {
     res.status(200).json({
-      "msg": "Login successful, correct details",
-      "data": list
+      msg: "Login successful, correct details",
+      data: list
     });
   } else {
-    res.json({ "msg": "Email or password is incorrect" })
+    res.json({ msg: "Email or password is incorrect" });
   }
-})
-
-// [Removes data] Handles DELETE requests, used to delete data from the server.
-app.delete("/deleteUserByName", async (req, res) => {
-  let { name } = req.query;
-  await client.connect();
-  await db.collection("employee").deleteOne({ "name": name });
-  res.json({ "msg": "user deleted" });
-})
-
-// [Update existing data] Handles PUT requests, used to update existing data on the server.
-app.put("/update_password", async (req, res) => {
-  let(name, password) = req.query;
-  let db = client.db(dfName);
-  await db.collection("employee").updateOne({ "name": name }, { $set: { "password": password } });
-  res.json({ "msg": "password updated" });
 });
 
-app.put("/getById", async (req, res) => {
-  let { id } = req.query;
-  let db = client.db(dbName);
-  let data = await db.collection("employee ").find({ "_id": new ObjectId(id) });
-  res.json(data)
+// Handles DELETE requests [Removes data]
+ex.delete("/deleteUserByName", async (req, res) => {
+  const { name } = req.query;
+  const db = client.db(dbName);
+  await client.connect();
+  await db.collection("employee").deleteOne({ name });
+  res.json({ msg: "User deleted" });
+});
 
-})
+// Handles PUT requests [Update existing data]
+ex.put("/update_password", async (req, res) => {
+  const { name, password } = req.query;
+  const db = client.db(dbName);  // Fixed typo dfName -> dbName
+  await db.collection("employee").updateOne({ name }, { $set: { password } });
+  res.json({ msg: "Password updated" });
+});
 
-insertData()
-  .then(console.log)
-  .catch(console.error)
-  .finally(() => client.close());
+// Get employee by ID
+ex.put("/getById", async (req, res) => {
+  const { id } = req.query;
+  const db = client.db(dbName);
+  const data = await db.collection("employee").findOne({ _id: new ObjectId(id) });
+  res.json(data);
+});
+
+const PORT = 3000;
+ex.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
+
