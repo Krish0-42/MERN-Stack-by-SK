@@ -10,7 +10,7 @@ function App() {
   const mobileRef = useRef();
 
   const getData = async () => {
-    let res = await fetch("http://localhost:8080/getjob", { method: "GET" });
+    let res = await fetch("http://localhost:8080/getjob", { method: "GET",headers:{ "token" : "ksdafkljashflkasdhf"} });
 
     if (!res.ok) {
       throw new Error(`HTTP error! status: ${res.status}`);
@@ -33,7 +33,7 @@ function App() {
     let res = await fetch("http://localhost:8080/createJob",
       {
         method: "POST", body: JSON.stringify(data),
-        headers: { "content-type": "application/json" }
+        headers: { "content-type": "application/json", "token" : "ksdafkljashflkasdhf" }
       });
 
       // Automatically removes the entered data
@@ -49,7 +49,7 @@ function App() {
 
   const deleteJob = async (id) => {
     // $ aka string literal is used for to print var into the backtick symbol - '`' aka Template literals, allow for easier string interpolation and multiline strings.
-    let res = await fetch(`http://localhost:8080/delete_id`, { method: "DELETE",headers:{"content-type" : "application/json"} , body:JSON.stringify({"id" : id})});
+    let res = await fetch(`http://localhost:8080/delete_id`, { method: "DELETE",headers:{"content-type" : "application/json", "token" : "ksdafkljashflkasdhf"} , body:JSON.stringify({"id" : id})});
     if (res.ok) {
       alert("delete");
       getData()
@@ -59,13 +59,13 @@ function App() {
   }
 
   const loadDataForUpdate = (id) => {
-    let matchJob = jobList.filter((j) => id == j._id)
+    let matchJob = jobList.filter((j) => id === j._id)
     console.log(matchJob);
     setId(id);
     nameRef.current.value = matchJob[0].name;
   }
 
-  const updateJob  = async (id) => {
+  const updateJob  = async () => {
     let data = {
       "id": id, 
       "name": nameRef.current.value,
@@ -74,13 +74,14 @@ function App() {
       "mobile": mobileRef.current.value
     }
 
-    let res = await fetch(" ", { method: "POST" })
+    let res = await fetch("http://localhost:8080/updatejob", { method: "POST", body : JSON.stringify(data), headers:{"content-type" : "application/json", "token" : "ksdafkljashflkasdhf"} })
     if (res.ok) {
       alert("update");
     } else {
       alert("Cant Update");
     }
   }
+
   return (
     <div>
       {
@@ -92,7 +93,7 @@ function App() {
               {/* use for deleting the id */}
               <button onClick={() => deleteJob(obj._id)}> Delete it </button>
               {/* use for Updating */}
-              <button onClick={() => updateJob(obj._id)}> Update </button>
+              <button onClick={() => loadDataForUpdate(obj._id)}> Update </button>
 
             </div>
           )
@@ -109,7 +110,8 @@ function App() {
         <div> <h6> New password: </h6> <input type="password" ref={pswRef} placeholder='New Password:' /></div>
         <div> <h6> New mobile: </h6> <input type="mobile_no" ref={mobileRef} placeholder='New Mobile: ' /></div>
 
-        <button onClick={job_create}> Enter New Emp</button>
+        <button onClick={job_create}> Enter New Emp </button>
+        <button onClick={updateJob}> Update the details </button>
       </div>
     </div>
   );
