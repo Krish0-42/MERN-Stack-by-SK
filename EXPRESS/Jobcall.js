@@ -13,13 +13,14 @@ Sharing (CORS) in the Express application. */
 const cors = require('cors');
 app.use(cors());
 
-app.use((req, res, next) => { // the middleware
+app.use('/api/', (req, res, next) => { // the middleware
     // reading he header from the header.
     console.log("Token accessing...")
     let { token } = req.headers;
     if (token == "" || token == undefined) {
         res.json({ "message" : " Please provide a token "});
     } else {
+        jwt.verify(token, 'SECRET');
         next();
     }
 });
@@ -36,7 +37,7 @@ const url = 'mongodb+srv://saikrishnan209:Sairam_22@cluster0.bvxx4.mongodb.net/'
 const client = new MongoClient(url);
 
 // creating employee data using req.body
-app.post("/createjob", async (req, res) => {
+app.post("/api/createjob", async (req, res) => {
     let { name, email, password, mobile_no } = req.body;
     let data = {
         "name": name,
@@ -79,7 +80,7 @@ app.post("/joblogin", async (req, res) => {
 })
 
 // Using post method
-app.post('/updatejob', async (req, res) => {
+app.post('/api/updatejob', async (req, res) => {
     let { name, password } = req.body;
     await client.connect();
     let db = client.db(ex);
@@ -105,15 +106,17 @@ app.post("/login_secure", async (req, res) =>{
 }); 
 
 // for listing all Job details from mongoDB(Database)
-app.get("/getjob", async (req, res) => {
+app.get("/api/getjob", async (req, res) => {
+    console.log("Getting your data from the dataset: ")
     await client.connect();
+    let { name } = req.body;
     let db = client.db(ex);
-    let list = await db.collection('jobs').find({}).toArray();
+    let list = await db.collection('jobs').find({ "name" : name}).toArray();
     res.status(200).json(list)
 });
 
 // for getting specific employee details from mongoDB(Database)
-app.get("/listjobbyname/:name", async (req, res) => {   // "/listempbyname/:name" => path variable
+app.get("/api/listjobbyname/:name", async (req, res) => {   // "/listempbyname/:name" => path variable
     await client.connect();
     let { name } = req.params; // postman url
     let db = client.db(ex);
@@ -121,7 +124,7 @@ app.get("/listjobbyname/:name", async (req, res) => {   // "/listempbyname/:name
     res.status(200).json(list)
 })
 
-app.get('/updatejobusingget', async (req, res) => {
+app.get('/api/updatejobusingget', async (req, res) => {
     let { id } = req.query;
     await client.connect();
     let db = client.db(ex);
@@ -131,7 +134,7 @@ app.get('/updatejobusingget', async (req, res) => {
     res.json(data)
 })
 
-app.put("/updatejobbyname", async (req, res) => {
+app.put("/api/updatejobbyname", async (req, res) => {
     let { name, password } = req.query;
     await client.connect();
     let db = client.db(ex);
@@ -141,7 +144,7 @@ app.put("/updatejobbyname", async (req, res) => {
     res.json({ "msg": "Data updated successfully" })
 });
 
-app.delete("/deletejobbyname", async (req, res) => {
+app.delete("/api/deletejobbyname", async (req, res) => {
     let { name } = req.query;
     await client.connect();
     let db = client.db(ex);
@@ -149,7 +152,7 @@ app.delete("/deletejobbyname", async (req, res) => {
     res.json({ "msg": "user deleted" })
 })
 
-app.delete('/delete_id', async (req, res) => {
+app.delete('/api/delete_id', async (req, res) => {
     let { id } = req.body;
     console.log(id);
     await client.connect();
