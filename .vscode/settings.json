@@ -3,6 +3,7 @@
         "adrs",
         "createjob",
         "deletejobbyname",
+        "fileupload",
         "getjob",
         "jobcall",
         "joblogin",

@@ -13,6 +13,9 @@ Sharing (CORS) in the Express application. */
 const cors = require('cors');
 app.use(cors());
 
+/* The code `app.use('/api/', (req, res, next) => { ... })` is implementing a middleware function in
+the Express application. This middleware function is specifically applied to routes that start with
+'/api/'. Here's what it does: */
 app.use('/api/', (req, res, next) => { // the middleware
     // reading he header from the header.
     console.log("Token accessing...")
