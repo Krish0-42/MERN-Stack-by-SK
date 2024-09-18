@@ -3,15 +3,20 @@ var express = require('express');
 /*  allows you to connect to a MongoDB database and perform operations such as inserting, updating, deleting, and querying
 documents in the database.is used to establish a connection to a MongoDB database hosted on MongoDB Atlas. */
 const { MongoClient, ObjectId } = require('mongodb');
+var jwt = require('jsonwebtoken');
 
 var app = express();
 app.use(express.json());
-
 
 /* The code `const cors = require('cors'); app.use(cors());` is implementing Cross-Origin Resource
 Sharing (CORS) in the Express application. */
 const cors = require('cors');
 app.use(cors());
+
+const fileUpload = require('express-fileupload');
+app.use(fileUpload({
+    limits: { fileSize: 50 * 1024 * 1024},
+}));
 
 /* The code `app.use('/api/', (req, res, next) => { ... })` is implementing a middleware function in
 the Express application. This middleware function is specifically applied to routes that start with
@@ -30,7 +35,6 @@ app.use('/api/', (req, res, next) => { // the middleware
 
 /* This library is commonly used for generating and verifying JSON Web Tokens (JWT) in web applications. JSON Web Tokens are used for securely transmitting information between parties as
 a JSON object. */
-var jwt = require('jsonwebtoken');
 
 // main database
 const ex = "jobcall"
@@ -107,6 +111,21 @@ app.post("/login_secure", async (req, res) =>{
         res.json({ "message" : "Your are wong!" })
     }
 }); 
+
+app.post("/upload", function(req, res) {
+    let file = req.files.img; // img is must be mentioned in the body => form-data.
+    let uploadPath = __dirname + '/upload/' + file.name;
+
+    file.mv(uploadPath, function(err){
+        if (err) {
+            return res.status(500).send(err);
+        }else{
+            res.send("File uploaded");
+        } 
+        
+    })
+    // console.log(res.file.foo); // foo mention you file.
+})
 
 // for listing all Job details from mongoDB(Database)
 app.get("/api/getjob", async (req, res) => {
